@@ -15,9 +15,11 @@ public class Ball {
         if (this.equals(ball)) {
             return CompareStatus.STRIKE;
         }
+
         if (this.number.equals(ball.number)) {
             return CompareStatus.BALL;
         }
+
         return CompareStatus.NOTHING;
     }
 

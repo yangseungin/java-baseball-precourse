@@ -15,12 +15,16 @@ public class RandomNumberGenerator {
 
         while (numbers.size() < NUMBER_OF_NUMBERS) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
+            addIfDoesNotContain(numbers, randomNumber);
         }
 
         return numbers;
+    }
+
+    private static void addIfDoesNotContain(List<Integer> numbers, int randomNumber) {
+        if (!numbers.contains(randomNumber)) {
+            numbers.add(randomNumber);
+        }
     }
 
 }
