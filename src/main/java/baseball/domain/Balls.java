@@ -36,6 +36,26 @@ public class Balls {
         return list;
     }
 
+    public BallCompareResult compare(Balls playerBalls) {
+        BallCompareResult ballCompareResult = new BallCompareResult();
+        for (Ball myBall : this.list) {
+            BallCompareResult res = ballCheck(myBall, playerBalls);
+
+            ballCompareResult.setBallCount(ballCompareResult.getBallCount() + res.getBallCount());
+            ballCompareResult.setStrikeCount(ballCompareResult.getStrikeCount() + res.getStrikeCount());
+        }
+
+        return ballCompareResult;
+    }
+
+    private BallCompareResult ballCheck(Ball myball, Balls playerBalls) {
+        BallCompareResult ballCompareResult = new BallCompareResult();
+        for (Ball playerBall : playerBalls.getList()) {
+            ballCompareResult.recode(playerBall.compare(myball));
+        }
+        return ballCompareResult;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
