@@ -44,7 +44,6 @@ public class BallCompareResult {
         if (strikeCount > 0) {
             message += String.format("%s스트라이크", strikeCount);
         }
-
         return message.trim();
     }
 }

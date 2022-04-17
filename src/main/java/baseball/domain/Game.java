@@ -1,6 +1,7 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 
 import java.util.List;
 
@@ -19,21 +20,16 @@ public class Game {
         Player player = new Player();
         BallCompareResult ballCompareResult;
         do {
-            System.out.println("숫자를 입력해 주세요:");
-            Balls playerBalls = player.createBalls(Console.readLine());
+            String input = InputView.inputNumber();
+            Balls playerBalls = player.createBalls(input);
             ballCompareResult = balls.compare(playerBalls);
-            System.out.println(ballCompareResult.getMessage());
-
+            OutputView.showResult(ballCompareResult.getMessage());
         } while (!ballCompareResult.isAllStrike());
-
         return end();
-
     }
 
     private GameEndStatus end() {
-        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("새로운 게임을 시작하려면1, 종료하려면 2를 입력하세요.");
-        String restart = Console.readLine();
+        String restart = InputView.inputRestart();
         if (restart.equals("1")) {
             return GameEndStatus.RESTART;
         }
