@@ -9,16 +9,16 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ComputerTest {
+class GameTest {
 
     @DisplayName("3개의 공을 가진 컴퓨터 생성")
     @ParameterizedTest
     @CsvSource({"1, 2, 3", "4, 5, 6"})
     void create_computer(int num1, int num2, int num3) {
         List<Integer> numbers = Arrays.asList(num1, num2, num3);
-        Computer computer = new Computer(numbers);
+        Game game = new Game(numbers);
 
-        assertThat(computer.getBalls()).isEqualTo(new Balls(numbers));
+        assertThat(game.getBalls()).isEqualTo(new Balls(numbers));
     }
 
 }
