@@ -30,10 +30,10 @@ public class Game {
 
     private GameEndStatus end() {
         String restart = InputView.inputRestart();
-        if (restart.equals("1")) {
+        if (restart.equals(GameEndStatus.RESTART.getValue())) {
             return GameEndStatus.RESTART;
         }
-        if (restart.equals("2")) {
+        if (restart.equals(GameEndStatus.END.getValue())) {
             return GameEndStatus.END;
         }
         throw new IllegalArgumentException("잘못 입력하였습니다.");
